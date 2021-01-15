@@ -17,6 +17,6 @@ const app = express();
 server.applyMiddleware({ app });
 
 // Listen server
-app.listen({ port: 3000 }, () =>
+app.listen({ process.env.PORT }, () =>
   console.log(`🚀Server ready at http://localhost:3000${server.graphqlPath}`)
 );
