@@ -1,0 +1,260 @@
+$blackGradient: linear-gradient(#333,#111);
+$magCyGradient: linear-gradient(to right, #f0f, #0ff);
+$bluenight: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+$black: #292929;
+$redish: #9c673c;
+$grey: #584E4A;
+$white: #f3f3f3;
+$fontSize: 5rem;
+
+.visuallyhidden {
+  display: none!important;
+}
+
+#contact {
+  background: $bluenight;
+  color: yellow;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+
+  .next-page-title {
+    transform: translate(-20%, -27%);
+  }
+
+  #swapText {
+
+    position: absolute;
+    top:4rem;
+    left:51rem;
+    //margin: 7rem auto 2rem;
+    //background: $magCyGradient;
+
+    background: -webkit-linear-gradient(right, #f0f, #0ff, #f0f, #0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 5rem;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    form {
+      width: 50vw;
+      min-width: 300px;
+      margin: 2rem 2rem 0 ;
+      font-size: 1.5rem;
+
+      input, textarea {
+        border:none;
+        width: 100%;
+        margin: 0.3rem auto;
+        padding: .3rem 1rem;
+      }
+
+      form input:first-of-type {
+        border-radius: 10px 0 0 0 ;
+      }
+
+      .btn {
+        text-decoration: none;
+        border: 1.5px solid rgba(146, 148, 248, 0.4);
+        position: relative;
+        overflow: hidden;
+        color: white;
+        width: 100%;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(146, 148, 248, 0.4),
+          transparent
+        );
+        transition: all 650ms;
+      }
+
+      .btn:hover:before {
+        left: 100%;
+      }
+    }
+  
+
+
+    .mov_round_eff {
+      position: relative;
+      width: 27rem;
+      height: 27rem;
+      cursor: pointer;
+
+      #profile_pic {
+        width: 22rem;
+        border-radius: 50%;
+        //margin: 3rem auto;
+        border: .5px solid rgba(146, 148, 248, 0.4);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+      }
+#rocket {
+  width: 30rem;
+  position: absolute;
+  top:50%;
+  left:50%;
+  animation: spin 20s linear infinite;
+}
+svg {
+//animation: spin2 100s linear infinite;
+transform: rotate(270deg);
+
+}
+/*       #rocket {
+  width: 30rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: mov_round 5s linear infinite;
+
+} */
+    }
+
+  }
+
+
+
+
+}
+
+
+/* @-webkit-keyframes mov_round {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+ 
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+border-radius: 0;
+background:#41A9F0;
+    
+  }
+
+} */
+
+@-webkit-keyframes spin {
+ 0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+ 
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+}
+}
+
+/* @-webkit-keyframes spin2 {
+ 0% {
+    transform: rotate(270deg);
+  }
+ 
+  100% {
+    transform: rotate(630deg);
+} 
+}*/
+
+.header {
+  //background: rgba(20, 5, 5, 1);
+  height: 25vh;
+  //overflow: hidden;
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  color: #fff;
+  //perspective: 800px;
+}
+
+
+//Header effect
+
+#ui {
+  .text {
+    position: absolute;
+    font-size: $fontSize;
+    color: #fff;
+    line-height: $fontSize;
+    opacity: 0;
+        text-align: center;
+    margin: 7rem auto 2rem;
+    //font-family: 'Anton', sans-serif;
+    //transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+
+    @for $i from 0 through 100 {
+      $key: $i + 1;
+      &:nth-child(#{$key}) {
+        $row: floor($i / 20);
+            background: -webkit-linear-gradient(right, #f0f, #0ff, #f0f, #0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+        //color: rgba(255 - $key * 2, 50 - $key / 2, $key * 3, 1);
+        clip-path: polygon(
+          floor($i / 2) * 10% - $row * 100% $row * 50%,
+          floor($key / 2) * 10% - $row * 100% ceil($key % 2) * 50% + ($row * 50%),
+          ceil($key / 2) * 10% - $row * 100% ($row + 1) * 50%
+        );
+        transform-origin: random(100) - 50 + floor($i / 2) * 10% - $row * 100%  random(100) - 50 + $row * 50%;
+        animation: fly#{$key} 3000ms $i * 1ms cubic-bezier(0.360, 0.100, 0.160, 1.000) alternate forwards;
+        
+        @keyframes fly#{$key} {
+          $initX: random(1000) - 500;
+          $initY: random(1000) - 500;
+          $initZ: random(1000) - 500;
+          $initDepth: random(3000) - 2500;
+          0% {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotateX(#{$initX}deg) rotateY(#{$initY}deg) rotateZ(#{$initZ}deg) translateZ(#{$initDepth}px);
+          }
+          10% {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotateX(#{$initX}deg) rotateY(#{$initY}deg) rotateZ(#{$initZ}deg) translateZ(#{$initDepth}px);
+          }
+          90% {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0px);
+          }
+          100% {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0px);
+          }
+        }
+      }
+    }
+
+
+  }
+}
+
+    .swapText {
+
+       
+      .textOut {
+        display: none;
+      }
+      .textIn:before {
+        content: "E.T.";
+        //visibility: v
+      }
+    
+  }
